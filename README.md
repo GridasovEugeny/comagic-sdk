@@ -4,7 +4,7 @@
 
 Install using `pip`...
 
-    pip install comagic-data-api-sdk
+    as local module only
     
 # Usage
 ```python
