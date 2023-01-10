@@ -93,9 +93,9 @@ class VirtualNumber(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['activation_data'] = parse_datetime(
-            model_dict.get('activation_data')
-        )
+        #model_dict['activation_data'] = parse_datetime(
+        #    model_dict.get('activation_data')
+        #)
         return cls(**model_dict)
 
 
@@ -167,7 +167,7 @@ class Campaign(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict = parse_datetime(model_dict.get('creation_time'))
+        #model_dict = parse_datetime(model_dict.get('creation_time'))
         return cls(**model_dict)
 
 
@@ -203,8 +203,8 @@ class Site(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        print(model_dict)
-        model_dict['creation_date'] = parse_datetime(model_dict.get('creation_date'))
+        #print(model_dict)
+        #model_dict['creation_date'] = parse_datetime(model_dict.get('creation_date'))
         return cls(**model_dict)
 
 
@@ -312,7 +312,7 @@ class CampaignDailyStat(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['date'] = parse_datetime(model_dict.get('date'))
+        #model_dict['date'] = parse_datetime(model_dict.get('date'))
         return cls(**model_dict)
 
 
@@ -403,8 +403,8 @@ class Communication(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
-        model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
+        #model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
+        #model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
         return cls(**model_dict)
 
 
@@ -502,9 +502,9 @@ class Call(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['start_time'] = parse_datetime(model_dict.get('start_time'))
-        model_dict['finish_time'] = parse_datetime(model_dict.get('finish_time'))
-        model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
+        #model_dict['start_time'] = parse_datetime(model_dict.get('start_time'))
+        #model_dict['finish_time'] = parse_datetime(model_dict.get('finish_time'))
+        #model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
         return cls(**model_dict)
 
 
@@ -547,8 +547,8 @@ class CallLegs(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['start_time'] = parse_datetime(model_dict.get('start_time'))
-        model_dict['connect_time'] = parse_datetime(model_dict.get('connect_time'))
+        #model_dict['start_time'] = parse_datetime(model_dict.get('start_time'))
+        #model_dict['connect_time'] = parse_datetime(model_dict.get('connect_time'))
         return cls(**model_dict)
 
 
@@ -621,8 +621,8 @@ class Goal(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
-        model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
+        #model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
+        #model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
         return cls(**model_dict)
 
 
@@ -703,8 +703,8 @@ class Chat(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
-        model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
+        #model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
+        #model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
         return cls(**model_dict)
 
 
@@ -722,7 +722,7 @@ class ChatMessage(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['date_time'] = parse_datetime(model_dict.get('model_dict'))
+        #model_dict['date_time'] = parse_datetime(model_dict.get('model_dict'))
         return cls(**model_dict)
 
 
@@ -805,9 +805,9 @@ class OfflineMessage(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
-        model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
-        model_dict['process_time'] = parse_datetime(model_dict.get('process_time'))
+        #model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
+        #model_dict['sale_date'] = parse_datetime(model_dict.get('sale_date'))
+        #model_dict['process_time'] = parse_datetime(model_dict.get('process_time'))
         return cls(**model_dict)
 
 
@@ -876,7 +876,7 @@ class VisitorSession(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
+        #model_dict['date_time'] = parse_datetime(model_dict.get('date_time'))
         return cls(**model_dict)
 
 
@@ -901,7 +901,7 @@ class FinancialCallLegs(BaseModel):
 
     @classmethod
     def from_dict(cls, model_dict):
-        model_dict['start_time'] = parse_datetime(model_dict.get('start_time'))
+        #model_dict['start_time'] = parse_datetime(model_dict.get('start_time'))
         super().from_dict(model_dict)
 
 

@@ -964,11 +964,11 @@ class Comagic(object):
                                               id=id, name=name, schedules=schedules)
         return self._send_api_request(params)
 
-    def get_campaign_daily_stat(self, date_from: datetime, date_till: datetime, limit: Optional[int] = None,
+    def get_campaign_daily_stat(self, site_id: int, date_from: datetime, date_till: datetime, raw_mode: bool = False, limit: Optional[int] = None,
                                 offset: Optional[int] = None,
                                 filter: dict = None, fields: list = None, sort: list = None,
                                 user_id: Optional[int] = None) -> any:
-        if not fields:
+        if not fields and not raw_mode:
             fields = CampaignDailyStat.fields()
         kwargs = {
             'limit': limit,
@@ -978,9 +978,12 @@ class Comagic(object):
             'sort': sort,
             'date_from': date_from.strftime(DATETIME_FORMAT),
             'date_till': date_till.strftime(DATETIME_FORMAT),
+            'site_id': site_id
         }
         params = self._create_endpoint_params('get', 'campaign_daily_stat', user_id=user_id, **kwargs)
         response = self._send_api_request(params)
+        if raw_mode:
+            return response
         return map(CampaignDailyStat.from_dict, response)
 
     def get_customers(self, limit: Optional[int] = None,
