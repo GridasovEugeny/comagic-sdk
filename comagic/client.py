@@ -779,11 +779,11 @@ class Comagic(object):
         response = self._send_api_request(params)
         return map(OfflineMessage.from_dict, response)
 
-    def get_visitor_sessions_report(self, date_from: datetime, date_till: datetime, limit: Optional[int] = None,
+    def get_visitor_sessions_report(self, date_from: datetime, date_till: datetime, raw_mode:bool = False, limit: Optional[int] = None,
                                     offset: Optional[int] = None,
                                     filter: dict = None, fields: list = None, sort: list = None,
                                     user_id: Optional[int] = None) -> any:
-        if not fields:
+        if not fields and not raw_mode:
             fields = VisitorSession.fields()
         kwargs = {
             'limit': limit,
@@ -796,6 +796,8 @@ class Comagic(object):
         }
         params = self._create_endpoint_params('get', 'visitor_sessions_report', user_id=user_id, **kwargs)
         response = self._send_api_request(params)
+        if raw_mode:
+            return response
         return map(VisitorSession.from_dict, response)
 
     def get_financial_call_legs_report(self, date_from: datetime, date_till: datetime, limit: Optional[int] = None,
