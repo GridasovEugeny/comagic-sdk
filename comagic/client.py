@@ -760,11 +760,11 @@ class Comagic(object):
         response = self._send_api_request(params)
         return map(ChatMessage.from_dict, response)
 
-    def get_offline_messages_report(self, date_from: datetime, date_till: datetime, limit: Optional[int] = None,
-                                    offset: Optional[int] = None,
+    def get_offline_messages_report(self, date_from: datetime, date_till: datetime, raw_mode: bool = False,
+    				    limit: Optional[int] = None, offset: Optional[int] = None,
                                     filter: dict = None, fields: list = None, sort: list = None,
                                     user_id: Optional[int] = None) -> any:
-        if not fields:
+        if not fields and not raw_mode:
             fields = OfflineMessage.fields()
         kwargs = {
             'limit': limit,
@@ -777,9 +777,11 @@ class Comagic(object):
         }
         params = self._create_endpoint_params('get', 'offline_messages_report', user_id=user_id, **kwargs)
         response = self._send_api_request(params)
+        if raw_mode:
+            return response
         return map(OfflineMessage.from_dict, response)
 
-    def get_visitor_sessions_report(self, date_from: datetime, date_till: datetime, raw_mode:bool = False, limit: Optional[int] = None,
+    def get_visitor_sessions_report(self, date_from: datetime, date_till: datetime, raw_mode: bool = False, limit: Optional[int] = None,
                                     offset: Optional[int] = None,
                                     filter: dict = None, fields: list = None, sort: list = None,
                                     user_id: Optional[int] = None) -> any:
@@ -1004,3 +1006,18 @@ class Comagic(object):
         params = self._create_endpoint_params('get', 'customers', user_id=user_id, **kwargs)
         response = self._send_api_request(params)
         return map(Customer.from_dict, response)
+        
+    def get_deals_history(self, limit: Optional[int] = None,
+                          offset: Optional[int] = None,
+                          filter: dict = None, fields: list = None, sort: list = None,
+                      	  user_id: Optional[int] = None) -> any:
+        kwargs = {
+            'limit': limit,
+            'offset': offset,
+            'filter': filter,
+            'fields': fields,
+            'sort': sort,
+        }
+        params = self._create_endpoint_params('get', 'deals_history', user_id=user_id, **kwargs)
+        response = self._send_api_request(params)
+        return response
